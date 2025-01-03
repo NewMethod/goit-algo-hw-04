@@ -1,0 +1,1 @@
+from .average_s import total_salary
