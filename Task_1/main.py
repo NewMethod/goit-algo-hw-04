@@ -9,8 +9,14 @@ def main():
     try:
         if absolute_path.exists() and absolute_path.is_file():
             #get function for average
-            (total, average) = total_salary(absolute_path)
-            return print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")
+            try:
+                total, average = total_salary(absolute_path)
+                if total != 0:
+                    return print(f"Загальна сума заробітної плати: {round(total)}, Середня заробітна плата: {round(average)}")
+                elif average==2:
+                    return print('Не відкривається файл з зарплатами')           
+            except:
+                return print('Файл з зарплатами пустий')
         else:
             return print("Не вдалося знайти файл з зарплатами")
     except FileNotFoundError:
