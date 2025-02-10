@@ -18,7 +18,7 @@ def main():
             except:
                 return print('Файл з зарплатами пустий')
         else:
-            return print("Не вдалося знайти файл з зарплатами")
+            return print("Шлях до файлу невірний")
     except FileNotFoundError:
         return print("Не вдалося знайти файл з зарплатами")
 

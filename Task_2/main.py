@@ -10,7 +10,7 @@ def main():
             cats_info = get_cats_info(absolute_path)
             return print(cats_info)
         else:
-            return print("Не вдалося знайти файл з котами")
+            return print("Шлях до файлу невірний")
     except FileNotFoundError:
         return print("Не вдалося знайти файл з котами")
 
