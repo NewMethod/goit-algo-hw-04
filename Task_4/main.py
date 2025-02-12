@@ -7,7 +7,7 @@ def parse_input(user_input):
     return result
 #normalize number of phone
 def normalize_phone(phone_number):
-    # generate right format numbers
+    # generate right format numbers from +38(099)-548-44-44 to 0995484444
     pattern_number = r"[+\(\)\w\s\\-]*(0\d{2})[\(\)\w\s\\-]*(\d{3})[\(\)\w\s\\-]*(\d{2})[\(\)\w\s\\-]*(\d{2})[\(\)\w\s\\-]*"
     match = re.search(pattern_number, phone_number)
     if match:
@@ -29,7 +29,7 @@ def add_contact(contacts, arguments):
     #delete incorrect symbols from phone
     phone_norm = normalize_phone(phone)
     if phone_norm == None:
-        return 'Incorrect phone number'
+        return 'Incorrect phone number. Must be like: Jack 380996669999'
     else:
         contacts[name.capitalize()] = phone_norm
         return "Contact added."
@@ -71,7 +71,7 @@ def main():
         elif program_output[0] == 'all':
             show_all(contacts)
         else:
-            print("Invalid command.")
+            print("Command not found")
 
 if __name__ == "__main__":
     main()
