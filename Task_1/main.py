@@ -3,7 +3,7 @@ from salary import total_salary
 
 def main():
     # build object Path for dir
-    relative_path = Path("salary/salary.t*")
+    relative_path = Path("salary/salary.txt")
     absolute_path = relative_path.absolute()
     # existing control
     try:

@@ -24,12 +24,12 @@ def add_contact(contacts, arguments):
         values = ' '.join(values)
         final_values.append(values)
     else:
-        return "Incorrect name or all line"
+        return "Incorrect name(less 2 symbols like a or B) or all line(used more then 2 arguments after command or did not use phone number)"
     name, phone = final_values
     #delete incorrect symbols from phone
     phone_norm = normalize_phone(phone)
     if phone_norm == None:
-        return 'Incorrect phone number. Must be like: Jack 380996669999'
+        return 'Incorrect phone number. Incorrect count of numbers or Must be like: Jack 380996669999 or Jack 0996669999'
     else:
         contacts[name.capitalize()] = phone_norm
         return "Contact added."
@@ -40,6 +40,12 @@ def change_contact(contacts, arguments):
         phone_norm = normalize_phone(phone)
         contacts[name.capitalize()] = phone_norm
         return "Contact updated."
+    else:
+        return "Contact isn`t found"
+#print username phone number
+def phone(contacts, name):
+    if name in contacts:
+        return print(f"{name.capitalize()} - {contacts[name]}")
     else:
         return "Contact isn`t found"
 #print all contacts
@@ -66,12 +72,12 @@ def main():
             print(add_contact(contacts, part_input))
         elif program_output[0] == "change":
             print(change_contact(contacts, part_input))
-        elif program_output[0] == "phone" and len(part_input) == 1:
-            print(contacts[part_input[0]])
+        elif program_output[0] == "phone":
+            print(phone(contacts, part_input))
         elif program_output[0] == 'all':
             show_all(contacts)
         else:
-            print("Command not found")
+            print("Command isn`t found")
 
 if __name__ == "__main__":
     main()
