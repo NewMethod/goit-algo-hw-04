@@ -36,16 +36,18 @@ def add_contact(contacts, arguments):
 #change contact im dictionary by name
 def change_contact(contacts, arguments):
     name, phone = arguments
+    name = name.capitalize()
     if name in contacts:
         phone_norm = normalize_phone(phone)
-        contacts[name.capitalize()] = phone_norm
+        contacts[name] = phone_norm
         return "Contact updated."
     else:
         return "Contact isn`t found"
 #print username phone number
 def phone(contacts, name):
+    name = name[0].capitalize()
     if name in contacts:
-        return print(f"{name.capitalize()} - {contacts[name]}")
+        return f"{name} - {contacts[name]}"
     else:
         return "Contact isn`t found"
 #print all contacts

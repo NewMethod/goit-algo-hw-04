@@ -13,12 +13,8 @@ def total_salary(path):
                     total += float(salary[1])
                 else:
                     print('Частково не коректні дані у файлі, потребують окремої перевірки та валідації.')
-    except OSError:
-        total, employers = 0, 1
-        return total, employers
-    try:
-        average = total/employers
-        return total, average
-    except ZeroDivisionError:
-        total, employers = 0, 2
+            average = total/employers
+            return total, average
+    except (OSError, ZeroDivisionError):
+        total, employers = 0, 0
         return total, employers
